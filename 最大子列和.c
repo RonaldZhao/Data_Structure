@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int MaxSubseqSum1(int a[], int n) {
+int MaxSubseqSum1(int a[], int n) { // O(n^3)
   int i, j, k;
   int ThisSum, MaxSum = 0;
   for (i = 0; i < n; i++) {
@@ -16,7 +16,7 @@ int MaxSubseqSum1(int a[], int n) {
   return MaxSum;
 }
 
-int MaxSubseqSum2(int a[], int n) {
+int MaxSubseqSum2(int a[], int n) { // O(n^2)
   int i, j;
   int ThisSum, MaxSum = 0;
   for (i = 0; i < n; i++) {
