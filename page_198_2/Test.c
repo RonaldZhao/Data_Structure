@@ -12,7 +12,7 @@ void main()
 	system("cls");//取代clrscr()函数，头文件为stdlib.h
 
 	printf("\n\n--------------------------List Demo is running...-----------------------------\n\n");
-	printf("First Inser function.\n");
+	printf("First Insert function.\n");
 
 	InitList_SqList(&La);
 
@@ -40,26 +40,21 @@ void main()
 
 	InitList_SqList(&Lb);
 
-	strcpy(e.name,"stu1");
+	strcpy(e.name,"stu2");
 	strcpy(e.stuno,"100001");
 	e.age = 80;
 	e.score = 1000;
 	ListInsert_SqList(&Lb,1,e);
-	strcpy(e.name,"stu3");
+	strcpy(e.name,"stu4");
 	strcpy(e.stuno,"100002");
 	e.age = 80;
 	e.score = 1000;
 	ListInsert_SqList(&Lb,2,e);
-	strcpy(e.name,"stu1");
+	strcpy(e.name,"stu6");
 	strcpy(e.stuno,"100001");
 	e.age = 80;
 	e.score = 1000;
 	ListInsert_SqList(&Lb,3,e);
-	strcpy(e.name,"stu3");
-	strcpy(e.stuno,"100002");
-	e.age = 80;
-	e.score = 1000;
-	ListInsert_SqList(&Lb,2,e);
 	printlist_SqList(Lb);
 	printf("List B length now is %d.\n\n",Lb.length);
 	getch();
@@ -77,7 +72,7 @@ void main()
 	printf("List A length now is %d.\n\n",La.length);
 	getch();
 
-	Destroy_SqList(&La);
+	Destroy_SqList(&La);//从这里开始会出错
 	Destroy_SqList(&Lb);
 	Destroy_SqList(&Lc);
 }//main
