@@ -12,7 +12,7 @@ void main()
 	system("cls");//取代clrscr()函数，头文件为stdlib.h
 
 	printf("\n\n--------------------------List Demo is running...-----------------------------\n\n");
-	printf("First Inser function.\n");
+	printf("First Insert function.\n");
 
 	InitList_SqList(&La);
 
@@ -28,7 +28,7 @@ void main()
 	ListInsert_SqList(&La,2,e);
 	printlist_SqList(La);
 	printf("List A length now is %d.\n\n",La.length);
-	getch();
+	_getch();
 	strcpy(e.name,"stu5");
 	strcpy(e.stuno,"100003");
 	e.age = 80;
@@ -36,48 +36,43 @@ void main()
 	ListInsert_SqList(&La,3,e);
 	printlist_SqList(La);
 	printf("List A length now is %d.\n\n",La.length);
-	getch();
+	_getch();
 
 	InitList_SqList(&Lb);
 
-	strcpy(e.name,"stu1");
+	strcpy(e.name,"stu2");
 	strcpy(e.stuno,"100001");
 	e.age = 80;
 	e.score = 1000;
 	ListInsert_SqList(&Lb,1,e);
-	strcpy(e.name,"stu3");
+	strcpy(e.name,"stu4");
 	strcpy(e.stuno,"100002");
 	e.age = 80;
 	e.score = 1000;
 	ListInsert_SqList(&Lb,2,e);
-	strcpy(e.name,"stu1");
+	strcpy(e.name,"stu6");
 	strcpy(e.stuno,"100001");
 	e.age = 80;
 	e.score = 1000;
 	ListInsert_SqList(&Lb,3,e);
-	strcpy(e.name,"stu3");
-	strcpy(e.stuno,"100002");
-	e.age = 80;
-	e.score = 1000;
-	ListInsert_SqList(&Lb,2,e);
 	printlist_SqList(Lb);
 	printf("List B length now is %d.\n\n",Lb.length);
-	getch();
+	_getch();
 
 	printf("First is MergeList _SqList function.\n");
 	printf("Now Merge List A and B...\n");
 	MergeList_SqList(La,Lb,&Lc);
 	printlist_SqList(Lc);
-	getch();
+	_getch();
 
 	printf("Second is UnionList_SqList function.\n");
 	printf("Now Union List A and B...\n");
 	UnionList_SqList(&La,Lb);
 	printlist_SqList(La);
 	printf("List A length now is %d.\n\n",La.length);
-	getch();
+	_getch();
 
-	Destroy_SqList(&La);
-	Destroy_SqList(&Lb);
-	Destroy_SqList(&Lc);
+	//Destroy_SqList(&La);//不需要，La、Lb、Lc会在程序结束时自动释放
+	//Destroy_SqList(&Lb);
+	//Destroy_SqList(&Lc);
 }//main
