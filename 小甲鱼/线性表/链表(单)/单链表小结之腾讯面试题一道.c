@@ -14,10 +14,10 @@ Status GetMidNode_Advanced(LinkList L, ElemType *e)
     search=mid=L;
     while(search->next)
     {
+        mid = mid->next;    // 我觉得小甲鱼视频中的这一步有问题，所以我改成这种了
         if(search->next->next)
         {
             search = search->next->next;
-            mid = mid->next;
         }
         else
         {
