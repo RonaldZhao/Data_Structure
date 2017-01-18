@@ -6,23 +6,23 @@
     没有解决连续存储分配(数组)带来的表长难以确定的问题；
     失去了顺序存储结构随机存取的特点。
 */
-//用数组描述的链表称为静态链表。
-//线性表的静态链表存储结构：
+// 用数组描述的链表称为静态链表。
+// 线性表的静态链表存储结构：
 #define MAXSIZE 1000
 typedef struct
 {
-    ElemType data;//数据
-    int cur;//游标
+    ElemType data;  // 数据
+    int cur;        // 游标
 }Component, StaticLinkList[MAXSIZE];
-//第一个和最后一个结点的数据域不用
+// 第一个和最后一个结点的数据域不用
 
-//对静态链表初始化相当于初始化数组
+// 对静态链表初始化相当于初始化数组
 Status InitList(StaticLinkList space)
 {
     int i;
     for(i=0;i<MAXSIZE-1;i++)
     {
-        space[i].cur=i+1;//指向下一个结点的游标(下标)
+        space[i].cur=i+1;// 指向下一个结点的游标(下标)
     }
     space[MAXSIZE-1].cur=0;
     return OK;
@@ -35,23 +35,38 @@ Status InitList(StaticLinkList space)
     4.数组的最后一个元素，即下标为MAXSIZE-1的cur则存放第一个有数值的元素的下标，相当于单链表中的头结点作用
 */
 
-//静态链表的插入操作
-//首先是获得静态分量的下标
+// 静态链表的插入操作
+// 首先是获得静态分量的下标
 int Malloc_SLL(StaticLinkList space)
 {
     int i=space[0].cur;
     if(space[0].cur)
     {
-        space[0].cur=space[i].cur;//把它的下一个分量用来作为备用
+        space[0].cur=space[i].cur;// 把它的下一个分量用来作为备用
     }
     return i;
 }
-/*在静态链表L中第i个位置之前插入新的数据元素e*/
+
+// 返回L中数据元素的个数
+int ListLength(StaticLinkList L)
+{
+    int len=0;
+    int i=L[MAXSIZE-1].cur;
+    // 根据最后一个有数据元素的游标一定是0
+    while(i)
+    {
+        i=L[i].cur;
+        len++;
+    }
+    return len;
+}
+
+/* 在静态链表L中第i个位置 之前 插入新的数据元素e */
 Status ListInsert(StaticLinkList L, int i, ElemType e)
 {
-    int j,k,l;
+    int j,k;
     k = MAXSIZE-1;
-    if(i<1||i>ListLength(L)+1)
+    if(i < 1 || i > ListLength(L) + 1)  // ListLength(L)+1 ?为什么要+1？
     {
         return ERROR;
     }
@@ -60,12 +75,12 @@ Status ListInsert(StaticLinkList L, int i, ElemType e)
     if(j)
     {
         L[j].data=e;
-        for(l=1;l<=i-1;l++)
+        for(int l = 1; l < i; l++)
         {
-            k=L[k].cur;
+            k = L[k].cur; // 直到找到第i个元素的下标
         }
-        L[j].cur=L[k].cur;
-        L[k].cur=j;
+        L[j].cur = L[k].cur;
+        L[k].cur = j;
         return OK;
     }
     return ERROR;
@@ -94,17 +109,4 @@ void Free_SLL(StaticLinkList space,int k)
 {
     space[k].cur=space[0].cur;
     space[0].cur=k;
-}
-
-//返回L中数据元素的个数
-int ListLength(StaticLinkList L)
-{
-    int j=0;
-    int i=L[MAXSIZE-1].cur;
-    while(i)
-    {
-        i=L[i].cur;
-        j++;
-    }
-    return j;
 }
