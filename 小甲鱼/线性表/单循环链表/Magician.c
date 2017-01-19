@@ -1,5 +1,5 @@
 /*
-魔术师发牌问题，循环链表实现
+魔术师发牌问题，循环链表实现。
 */
 
 #include <stdio.h>
@@ -11,19 +11,19 @@ typedef struct node
 {
     int data;
     struct node *next;
-}sqlist,*linklist;
+}sqlist,*LinkList;
 
-linklist CreateLinkList()
+LinkList CreateLinkList()
 {
-    linklist head=NULL;
-    linklist s,r;
+    LinkList head=NULL;
+    LinkList s,r;
     int i;
 
     r=head;
 
     for(i=1;i<=CardNumber;i++)
     {
-        s=(linklist)malloc(sizeof(sqlist));
+        s=(LinkList)malloc(sizeof(sqlist));
         s->data=0;
 
         if(head==NULL)
@@ -36,10 +36,10 @@ linklist CreateLinkList()
     return head;
 }
 
-//发牌顺序计算
-void Magician(linklist head)
+// 发牌顺序计算
+void Magician(LinkList head)
 {
-    linklist p;
+    LinkList p;
     int j;
     int Countnumber=2;
     p=head;
@@ -51,27 +51,37 @@ void Magician(linklist head)
             p=p->next;
             if(p->data!=0)
             {
-                p->next;//?
                 j--;
             }
         }
-        if(p->data==0)
+        p->data=Countnumber;
+        Countnumber++;
+        if(Countnumber > CardNumber)
         {
-            p->data=Countnumber;
-            Countnumber++;
-            if(Countnumber==14)
-                break;
+            break;
         }
     }
 }
 
-//销毁
-void DestoryList(linklist *list)
-{}
+// 销毁
+void DestoryList(LinkList *list)
+{
+    LinkList ptr = *list;
+    LinkList temp;
+    int i = 0;
+    
+    while(i < CardNumber)
+    {
+        temp = ptr;
+        ptr = ptr->next;
+        i++;
+        free(temp);
+    }
+}
 
 int main()
 {
-    linklist p;
+    LinkList p;
     int i;
 
     p=CreateLinkList();
