@@ -55,6 +55,7 @@ int main()
         p = p->next;
     }
     printf("%d\n", p->data); //输出最后一个
+    free(p);
     return 0;
 }
 
