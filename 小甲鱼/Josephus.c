@@ -9,52 +9,52 @@ typedef struct node
 {
     int data;
     struct node *next;
-}node;
+} node;
 
-node *create(int n)
+node *create(int n) // 生成长度为n的单循环链表
 {
-    node *p=NULL,*head;
-    head=(node*)malloc(sizeof(node));
-    p=head;
+    node *p = NULL, *head;
+    head = (node *)malloc(sizeof(node)); // 头结点
+    p = head;                            // p为游标结点
     node *s;
-    int i=1;
+    int i = 1;
 
-    if(n)
+    if (n)
     {
-        while(i<=n)
+        while (i <= n)
         {
-            s=(node*)malloc(sizeof(node));
-            s->data=i++;
-            p->next=s;
-            p=s;
+            s = (node *)malloc(sizeof(node));
+            s->data = i++;
+            p->next = s;
+            p = s;
         }
-        s->next=p->next;
+        s->next = head->next; // 尾结点的next指向头结点的next构成单循环
     }
-    free(head);
-    return s->next;
+    free(head);     // 销毁头结点
+    return s->next; // 返回第一个结点
 }
 
 int main()
 {
-    int n=41;
-    int m=3;
+    int n = 41; // 人数
+    int m = 3;  // 报数长度
     int i;
-    node *p=create(n);
+    node *p = create(n); // 生成链表
     node *temp;
     m %= n;
-    while(p!=p->next)
+    while (p != p->next)
     {
-        for(i=1;i<m-1;i++)
+        for (i = 1; i < m - 1; i++)
         {
-            p=p->next;
+            p = p->next;
         }
-        printf("%d->",p->next->data);
-        temp=p->next;
-        p->next=temp->next;
-        free(temp);
-        p=p->next;
+        printf("%d->", p->next->data);
+        temp = p->next;       // 记录当前自杀结点
+        p->next = temp->next; // 删除当前自杀结点
+        free(temp);           // 释放空间
+        p = p->next;
     }
-    printf("%d\n",p->data);//输出最后一个
+    printf("%d\n", p->data); //输出最后一个
     return 0;
 }
 
