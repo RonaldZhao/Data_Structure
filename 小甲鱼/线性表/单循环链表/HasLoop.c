@@ -11,30 +11,30 @@
 int HasLoop1(LinkList L)
 {
     LinkList p = L;
-    int pos1 = 0;
+    int step1 = 0;
     while(p)
     {
         LinkList q= L;
-        int pos2 = 0;
+        int step2 = 0;
         while(q)
         {
             if(q==p)
             {
-                if(pos1==pos2)
+                if(step1==step2)
                 {
                    break;
                 }
                else
                {
-                   printf("环的位置在第%d个结点处。\n\n", pos2);
+                   printf("环的位置在第%d个结点处。\n\n", step2);
                    return 1;
                }
             }
             q = q->next;
-            pos2++;
+            step2++;
         }
         p = p->next;
-        pos1++;
+        step1++;
     }
     return 0;
 }
