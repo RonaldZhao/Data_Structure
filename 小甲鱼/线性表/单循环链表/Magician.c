@@ -64,7 +64,7 @@ void Magician(LinkList head)
 }
 
 // 销毁
-void DestoryList(LinkList *list)
+void DestroyList(LinkList *list)
 {
     LinkList ptr = *list;
     LinkList temp;
@@ -93,7 +93,7 @@ int main()
         p=p->next;
     }
 
-    DestoryList(&p);
+    DestroyList(&p);
     
     return 0;
 }
