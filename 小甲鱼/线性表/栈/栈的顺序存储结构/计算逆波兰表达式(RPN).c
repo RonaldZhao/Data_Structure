@@ -1,6 +1,11 @@
+/*
+利用顺序栈实现对输入正确的逆波兰表达式的计算：
+    例如输入：1 2 - 4 5 + * #
+    输出：-9.000000
+*/
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h> // isdigit()
+#include <ctype.h> // isdigit()所在的头文件
 
 #define MAXBUFFER 10
 #define OK 1
@@ -29,6 +34,7 @@ void InitStack(SqStack *s)
     s->top = s->base;
     s->stackSize = STACK_INIT_SIZE;
 }
+
 void Push(SqStack *s, ElemType e)
 {
     if (s->top - s->base >= s->stackSize)
@@ -83,7 +89,7 @@ int main()
 
     while (c != '#')
     {
-        while (isdigit(c) || c == '.')
+        while (isdigit(c) || c == '.')  // 把当前字符转换为整数或浮点数并入栈
         {
             str[i++] = c;
             str[i] = '\0';
@@ -101,7 +107,7 @@ int main()
                 break;
             }
         }
-        switch (c)
+        switch (c)  // 出栈计算再入栈
         {
         case '+':
             Pop(&s, &d);
@@ -132,10 +138,10 @@ int main()
             }
             break;
         }
-        scanf("%c", &c);
+        scanf("%c", &c);    // 读取下一个字符
     }
 
-    Pop(&s, &e);
+    Pop(&s, &e);    // 弹出最后的结果
     DestroyStack(&s);
     printf("最终的计算结果为: %f", e);
 
