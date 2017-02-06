@@ -54,3 +54,19 @@
 		BinTree Right;
 	}
 设深度为d（只有一个根结点时，d为1）的二叉树只有度为0和2的结点，则此类二叉树的结点数至少为2d-1。
+
+先序、中序和后序的遍历过程：遍历过程中经过结点的路线一样，只是访问各结点的时机不同。
+
+由两种遍历序列就可以确定一棵二叉树，但是必须已知中序遍历！
+
+二叉搜索树（BST，Binary Search Tree），也叫二叉排序树或二叉查找树：
+    一棵二叉树，可以为空；如果不为空，满足以下性质：
+        1.非空左子树的所有键值小于其根结点的键值；
+	2.非空右子树的所有键值大于其根结点的键值；
+	3.左、右子树都是二叉搜索树。
+二叉搜索树操作的特别函数：
+	Position Find(ElementType X, BinTree BST)：从二叉搜索树BST中查找元素X，返回其所在结点的地址。
+	Position FindMin(BinTree BST)：从二叉搜索树BST查找并返回最小元素所在结点的地址。
+	Position FindMax(BinTree BST)：从二叉搜索树BST查找并返回最大元素所在结点的地址。
+	BinTree Insert(ElementType X, BinTree BST)
+	BinTree Delete(ElementType X, BinTree BST)
