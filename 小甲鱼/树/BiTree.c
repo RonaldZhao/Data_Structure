@@ -1,28 +1,28 @@
 /*
-    ÊäÈëÑùÀı£º(Ò»¸ö ^ ´ú±íÒ»¸ö¿Õ¸ñ)
+    è¾“å…¥æ ·ä¾‹ï¼š(ä¸€ä¸ª ^ ä»£è¡¨ä¸€ä¸ªç©ºæ ¼)
     AB^D^^CE^^^
     
-    Êä³öÑùÀı£º
-    A Î»ÓÚµÚ 1 ²ã.
-    B Î»ÓÚµÚ 2 ²ã.
-    D Î»ÓÚµÚ 3 ²ã.
-    C Î»ÓÚµÚ 2 ²ã.
-    E Î»ÓÚµÚ 3 ²ã.
+    è¾“å‡ºæ ·ä¾‹ï¼š
+    A ä½äºç¬¬ 1 å±‚.
+    B ä½äºç¬¬ 2 å±‚.
+    D ä½äºç¬¬ 3 å±‚.
+    C ä½äºç¬¬ 2 å±‚.
+    E ä½äºç¬¬ 3 å±‚.
 */
 #include <stdio.h>
 #include <stdlib.h>
 
-// Êı¾İÀàĞÍ
+// æ•°æ®ç±»å‹
 typedef char ElemType;
 
-// ¶ş²æÊ÷µÄ½áµã
+// äºŒå‰æ ‘çš„ç»“ç‚¹
 typedef struct BiTNode
 {
     ElemType data;
     struct BiTNode *lchild, *rchild;
 }BiTNode, *BiTree;
 
-// ´´½¨Ò»¿Ã¶ş²æÊ÷£¬Ô¼¶¨ÓÃ»§ÓÃÇ°Ğò±éÀúµÄ·½Ê½ÊäÈëÊı¾İ
+// åˆ›å»ºä¸€æ£µäºŒå‰æ ‘ï¼Œçº¦å®šç”¨æˆ·ç”¨å‰åºéå†çš„æ–¹å¼è¾“å…¥æ•°æ®
 void CreateBiTree(BiTree *T)
 {
     ElemType c;
@@ -42,13 +42,13 @@ void CreateBiTree(BiTree *T)
     }
 }
 
-// ·ÃÎÊ¶ş²æÊ÷½áµãµÄ¾ßÌå²Ù×÷
+// è®¿é—®äºŒå‰æ ‘ç»“ç‚¹çš„å…·ä½“æ“ä½œ
 void visit(ElemType c, int level)
 {
-    printf("%c Î»ÓÚµÚ %d ²ã.\n", c, level);
+    printf("%c ä½äºç¬¬ %d å±‚.\n", c, level);
 }
 
-// Ç°Ğò±éÀú¶ş²æÊ÷
+// å‰åºéå†äºŒå‰æ ‘
 void PreOrderTraverse(BiTree T, int level)
 {
     if( T )
