@@ -4,13 +4,13 @@ typedef int ElemType;
 
 typedef struct PTNode
 {
-	ElemType data;	// 结点位置
-	int parent;		// 双亲位置
+	ElemType data;	// 缁撶偣浣嶇疆
+	int parent;		// 鍙屼翰浣嶇疆
 }PTNode;
 
 typedef struct
 {
 	PTNode nodes[MAX_TREE_SIZE];
-	int r;	// 根的位置
-	int n;	// 结点数目
+	int r;	// 鏍圭殑浣嶇疆
+	int n;	// 缁撶偣鏁扮洰
 }PTree;
